@@ -75,11 +75,14 @@ app.post('/export-pdf', async (req, res) => {
 
     console.log('PDF generated successfully');
 
-    res.set({
-      'Content-Type':        'application/pdf',
-      'Content-Disposition': 'attachment; filename="thoughtspot-export.pdf"',
-      'Content-Length':      pdfBuffer.length,
-    });
+res.set({
+  'Content-Type': 'application/pdf',
+  'Content-Disposition': 'attachment; filename="thoughtspot-export.pdf"',
+  'Content-Length': pdfBuffer.length,
+  'Access-Control-Expose-Headers': 'Content-Disposition' // Important for CORS
+});
+
+return res.status(200).send(pdfBuffer);
 
     res.send(pdfBuffer);
 
