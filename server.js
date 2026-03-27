@@ -13,10 +13,7 @@ app.use(express.json({ limit: '50mb' }));  // ThoughtSpot payloads can be large
 
 // IMPORTANT: replace the origin below with your exact ThoughtSpot instance URL
 app.use(cors({
-  origin: [
-    'https://YOUR-INSTANCE.thoughtspot.cloud',  // ← replace this
-    'https://YOUR-INSTANCE.thoughtspot.com',    // ← and this if needed
-  ],
+  origin: '*',
   methods: ['POST', 'OPTIONS'],
 }));
 
