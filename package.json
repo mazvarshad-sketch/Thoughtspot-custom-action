@@ -1,0 +1,16 @@
+{
+  "name": "ts-pdf-exporter",
+  "version": "1.0.0",
+  "description": "Receives ThoughtSpot data, builds Excel, returns PDF",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "exceljs": "^4.3.0",
+    "puppeteer": "^21.0.0",
+    "cors": "^2.8.5"
+  }
+}
