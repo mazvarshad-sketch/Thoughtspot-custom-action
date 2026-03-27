@@ -41,9 +41,21 @@ app.post('/export-pdf', async (req, res) => {
 
     // ── 1. Extract data from ThoughtSpot payload ──────────────────────────
     const payload      = req.body;
-    const embedData    = payload?.payload?.data?.embedAnswerData
-                      ?? payload?.data?.embedAnswerData
-                      ?? payload?.embedAnswerData;
+    console.log('Full payload keys:', Object.keys(payload));
+
+    const embedData = payload?.payload?.data?.embedAnswerData
+               ?? payload?.data?.embedAnswerData
+               ?? payload?.embedAnswerData
+               ?? payload?.reportBookData
+               ?? payload;
+
+if (!embedData) {
+  return res.status(400).json({ error: 'No data found in payload' });
+}
+
+// Log what we found
+console.log('embedData keys:', Object.keys(embedData));
+console.log('embedData sample:', JSON.stringify(embedData).slice(0, 500));
 
     if (!embedData) {
       return res.status(400).json({ error: 'No embedAnswerData found in payload' });
