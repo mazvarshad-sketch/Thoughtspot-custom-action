@@ -36,6 +36,8 @@ app.use(cors({
 app.post('/export-pdf', async (req, res) => {
   try {
     console.log('Received export request from ThoughtSpot');
+    console.log('BODY:', JSON.stringify(req.body, null, 2));
+    console.log('HEADERS:', JSON.stringify(req.headers, null, 2));
 
     // ── 1. Extract data from ThoughtSpot payload ──────────────────────────
     const payload      = req.body;
